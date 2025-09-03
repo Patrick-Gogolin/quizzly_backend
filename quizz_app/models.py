@@ -11,6 +11,9 @@ class Quiz(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     video_url = models.URLField()
 
+    def __str__(self):
+        return f"Quiz from {self.user} with title: {self.title} and description {self.description}"
+
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, related_name="questions", on_delete=models.CASCADE)
     question_title = models.CharField(max_length=300)

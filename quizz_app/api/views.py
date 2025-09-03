@@ -1,11 +1,12 @@
-from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status, generics
+from rest_framework import mixins, viewsets
+from rest_framework.permissions import IsAuthenticated
 import os, json
 from .services import download_audio, transcribe_audio, generate_quiz
-from .serializers import QuizRequestSerializer, QuizResponseSerializer
+from .serializers import QuizRequestSerializer, QuizResponsePostSerializer, QuizResponseRetrieveUpdateSerializer
 from ..models import Quiz, Question
+from .permissions import IsOwner
 
 class TranscribeView(generics.CreateAPIView):
     serializer_class = QuizRequestSerializer
@@ -40,7 +41,7 @@ class TranscribeView(generics.CreateAPIView):
                     answer=question['answer']
                 )
             
-            response_serializer = QuizResponseSerializer(quiz)
+            response_serializer = QuizResponsePostSerializer(quiz)
             return Response(response_serializer.data, status=status.HTTP_201_CREATED)
 
         except Exception as e:
@@ -51,8 +52,27 @@ class TranscribeView(generics.CreateAPIView):
                 os.remove(audio_file)
 
 class ListQuizzesView(generics.ListAPIView):
-    serializer_class = QuizResponseSerializer
+    serializer_class = QuizResponseRetrieveUpdateSerializer
     
     def get_queryset(self):
         return Quiz.objects.filter(user=self.request.user)
     ####hier die Darstellung anpassen, es braucht kein updated at und created at in dieser Ausgabe
+    ##repo lösche und django secret key in die .env packen
+    ## coderr backend secret key ebenfalls in die .env packen
+    ## kanmind ebenfalls
+
+class QuizViewset(mixins.ListModelMixin,
+                  mixins.RetrieveModelMixin,
+                  mixins.UpdateModelMixin,
+                  mixins.DestroyModelMixin,
+                  viewsets.GenericViewSet):
+    
+    permission_classes = [IsAuthenticated, IsOwner]
+    queryset = Quiz.objects.all()
+    serializer_class = QuizResponseRetrieveUpdateSerializer
+
+    def get_queryset(self):
+        if self.action == "list":
+            return Quiz.objects.filter(user=self.request.user)
+        elif self.action in ["retrieve", "destroy", "update", "partial_update"]:
+            return Quiz.objects.all()
