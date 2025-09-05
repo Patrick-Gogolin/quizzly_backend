@@ -34,7 +34,7 @@ Requirements:
 Here is the transcript:
 """
 
-load_dotenv(r"C:\Users\Lidka\Desktop\Developerakademie\Backend\Modul_10\quizzly\quizzly_backend\env\.env")
+load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 def download_audio(url: str) -> str:
