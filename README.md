@@ -70,16 +70,27 @@ quizzly_backend/
 3. Install dependencies
 
         pip install -r requirements.txt
+   
+4. Set up environment variables
 
-4. Create a .env file
+   Copy the example file and create your own .env:
 
-        GEMINI_API_KEY=your_api_key_here
+       cp .env.example .env
+
+
+Open .env and fill in your values:
+
+    GEMINI_API_KEY=your_api_key_here
+
+
+⚠️ .env is ignored by Git and should never be committed.
+.env.example remains in the repo as a reference for required variables.
 
 5. Apply migrations
 
         python manage.py migrate
 
-6. Run the development server
+7. Run the development server
 
         python manage.py runserver
 
