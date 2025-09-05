@@ -5,40 +5,40 @@ Built with Django and Django REST Framework (DRF), the project uses JWT authenti
 
 🔧 Features
 
-    User registration and login with JWT (stored in secure cookies)
+User registration and login with JWT (stored in secure cookies)
 
-    YouTube URL validation
+YouTube URL validation
 
-    Automatic audio download from YouTube
+Automatic audio download from YouTube
 
-    Audio transcription with OpenAI Whisper
+Audio transcription with OpenAI Whisper
 
-    Quiz generation with Google Gemini (10 questions, 4 options each)
+Quiz generation with Google Gemini (10 questions, 4 options each)
 
-    Full CRUD functionality for quizzes
+Full CRUD functionality for quizzes
 
-    Role-based access: users can only access their own quizzes
+ Role-based access: users can only access their own quizzes
 
 
 🚀 Tech Stack
 
-    Python 3.13.1
+Python 3.13.1
 
-    Django 5.2
+ Django 5.2
 
-    Django REST Framework (DRF)
+ Django REST Framework (DRF)
 
-    Django SimpleJWT (with cookie support)
+ Django SimpleJWT (with cookie support)
 
-    yt-dlp (for audio download)
+ yt-dlp (for audio download)
 
-    Whisper (for transcription)
+Whisper (for transcription)
 
-    Google Gemini API (for quiz generation)
+Google Gemini API (for quiz generation)
 
-    SQLite (for development)
+SQLite (for development)
 
-    python-dotenv (for API key management)
+python-dotenv (for API key management)
 
 📁 Project Structure
 quizzly_backend/
@@ -52,31 +52,33 @@ quizzly_backend/
 
 1. Clone the repository
 
-    git clone https://github.com/your-username/quizzly_backend.git
-    cd quizzly_backend
+        git clone https://github.com/your-username/quizzly_backend.git
+        cd quizzly_backend
 
 2. Create and activate a virtual environment
 
-    python -m venv venv
-    source venv/bin/activate   # On Windows: venv\Scripts\activate
+        python -m venv venv
+        source venv/bin/activate   # On Windows: venv\Scripts\activate
 
 3. Install dependencies
 
-    pip install -r requirements.txt
+        pip install -r requirements.txt
 
 4. Create a .env file
 
-    GEMINI_API_KEY=your_api_key_here
+        GEMINI_API_KEY=your_api_key_here
 
 5. Apply migrations
 
-    python manage.py migrate
+        python manage.py migrate
 
 6. Run the development server
 
-    python manage.py runserver
+        python manage.py runserver
 
 🔑 API Endpoints
+
+
 🔐 Authentication
 
 POST /api/register/ – Register a new user
@@ -111,7 +113,7 @@ python-dotenv==1.0.1
 sqlparse==0.5.3
 tzdata==2025.2
 
-Notes
+NOTES
 
 SQLite is used in development; for production, switch to PostgreSQL or another robust database.
 
@@ -121,10 +123,10 @@ Gemini generates strictly valid JSON for quizzes (title, description, 10 questio
 
 JWT tokens are stored in cookies (HttpOnly, Secure, SameSite=Lax) for safer authentication.
 
-📨 Contact
+📨 CONTACT
 
 For questions, issues, or contributions, feel free to open an issue or contact the maintainer.
 
-📄 License
+📄 LICENSE
 
 This project is licensed under the MIT License. See the LICENSE file for details.
