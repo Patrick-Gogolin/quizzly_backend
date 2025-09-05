@@ -56,10 +56,6 @@ class ListQuizzesView(generics.ListAPIView):
     
     def get_queryset(self):
         return Quiz.objects.filter(user=self.request.user)
-    ####hier die Darstellung anpassen, es braucht kein updated at und created at in dieser Ausgabe
-    ##repo lösche und django secret key in die .env packen
-    ## coderr backend secret key ebenfalls in die .env packen
-    ## kanmind ebenfalls
 
 class QuizViewset(mixins.ListModelMixin,
                   mixins.RetrieveModelMixin,
