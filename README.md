@@ -41,12 +41,19 @@ SQLite (for development)
 python-dotenv (for API key management)
 
 📁 Project Structure
+
 quizzly_backend/
+
 ├── auth_app/        # Registration, login, JWT cookie handling
+
 ├── quiz_app/        # Transcription, quiz generation, CRUD
+
 ├── core/            # Settings, routing
+
 ├── manage.py
+
 └── db.sqlite3
+
 
 📦 Installation
 
@@ -103,14 +110,23 @@ DELETE /api/quizzes/{id}/ – Delete a quiz
 
 ⚙️ Requirements
 asgiref==3.8.1
+
 Django==5.2.3
+
 djangorestframework==3.16.0
+
 djangorestframework-simplejwt==5.3.1
+
 yt-dlp==2025.x.x
+
 whisper==x.x.x
+
 google-genai==x.x.x
+
 python-dotenv==1.0.1
+
 sqlparse==0.5.3
+
 tzdata==2025.2
 
 NOTES
