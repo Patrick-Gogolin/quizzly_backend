@@ -90,7 +90,11 @@ Open .env and fill in your values:
 
         python manage.py migrate
 
-7. Run the development server
+6. Make migrations
+   
+        python manage.py         makemigrations
+
+8. Run the development server
 
         python manage.py runserver
 
